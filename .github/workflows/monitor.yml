@@ -9,29 +9,18 @@ jobs:
   check:
     runs-on: ubuntu-latest
 
-    env:
-      DSM_URL: ${{ secrets.DSM_URL }}
-      TG_TOKEN: ${{ secrets.TG_TOKEN }}
-      TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-   steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
+      - name: Restore status cache
+        uses: actions/cache@v4
+        with:
+          path: status.txt
+          key: dsm-status
 
-  - name: Restore status cache
-    uses: actions/cache@v4
-    with:
-      path: status.txt
-      key: dsm-status
+      - name: Install dependencies
+        run: pip install requests
 
-  - name: Install dependencies
-    run: pip install requests
-
-  - name: Run monitor
-    run: python check_dsm.py
-
-  - name: Save status cache
-    uses: actions/cache@v4
-    with:
-      path: status.txt
-      key: dsm-status
+      - name: Run monitor
+        run: python check_dsm.py

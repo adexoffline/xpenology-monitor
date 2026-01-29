@@ -1,9 +1,3 @@
-print("Script started")
-print(f"DSM_URL: {DSM_URL}")
-print(f"TG_TOKEN present: {bool(TG_TOKEN)}")
-print(f"TG_CHAT_ID: {TG_CHAT_ID}")
-print(f"Status file exists: {os.path.exists(STATUS_FILE)}")
-
 import requests
 import os
 import warnings
@@ -15,6 +9,12 @@ TG_TOKEN = os.environ.get("TG_TOKEN")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID")
 
 STATUS_FILE = "status.txt"
+
+print("Script started")
+print(f"DSM_URL: {DSM_URL}")
+print(f"TG_TOKEN present: {bool(TG_TOKEN)}")
+print(f"TG_CHAT_ID: {TG_CHAT_ID}")
+print(f"Status file exists: {os.path.exists(STATUS_FILE)}")
 
 def is_dsm_up():
     try:

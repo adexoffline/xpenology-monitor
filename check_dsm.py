@@ -1,3 +1,9 @@
+print("Script started")
+print(f"DSM_URL: {DSM_URL}")
+print(f"TG_TOKEN present: {bool(TG_TOKEN)}")
+print(f"TG_CHAT_ID: {TG_CHAT_ID}")
+print(f"Status file exists: {os.path.exists(STATUS_FILE)}")
+
 import requests
 import os
 import warnings
